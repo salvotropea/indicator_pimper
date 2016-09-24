@@ -8,6 +8,7 @@
  */ 
 
 #include <avr/io.h>
+ int lall = 0;
 
 
 int main(void)
