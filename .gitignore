@@ -4,6 +4,10 @@
 *.obj
 *.elf
 
+#Atmel Studio Projectfiles
+*.xml
+*.cproj
+
 # Precompiled Headers
 *.gch
 *.pch
