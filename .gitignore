@@ -9,6 +9,13 @@
 *.cproj
 *.atsuo
 *.atsln
+*.eep
+*.lss
+*.map
+*.srec
+*.d
+*.mk
+Makefile
 
 # Precompiled Headers
 *.gch
