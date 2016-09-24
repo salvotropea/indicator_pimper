@@ -7,13 +7,31 @@
  * Description:		Application to modify the flashing mode of Indicator Lamps in cars.
  */ 
 
+#define F_CPU 16000000UL
 #include <avr/io.h>
+#include <stdio.h>
+#include <util/delay.h>
 
+//This function initialiases the Direction and Value at Startup of the Hardware. 
+void initPorts () {
+	//--Direction--//
+	DDRL = 0xff;	//PortL Output LEDs
+	DDRH = 0x00;	//PortH Input DIP-Switches
+	DDRK = 0x00;	//PortK Input Button1/2/3 & Joystick
+	
+	//--Startup value--//
+	PORTL = 0x00;	//All LEDs off
+}
 
 int main(void)
 {
-    while (1) 
-    {
-    }
+	initPorts();
+	while(1) {
+		PORTL = 0x01;
+		_delay_ms(150);
+		PORTL = 0x00;	
+		_delay_ms(150);
+	}
+	
 }
 
