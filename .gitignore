@@ -7,6 +7,8 @@
 #Atmel Studio Projectfiles
 *.xml
 *.cproj
+*.atsuo
+*.atsln
 
 # Precompiled Headers
 *.gch
