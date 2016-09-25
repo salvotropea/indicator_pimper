@@ -8,6 +8,8 @@
  */ 
 
 #define F_CPU 16000000UL
+#define led PORTL
+
 #include <avr/io.h>
 #include <stdio.h>
 #include <util/delay.h>
@@ -27,9 +29,9 @@ int main(void)
 {
 	initPorts();
 	while(1) {
-		PORTL = 0x01;
+		led = 0x01;
 		_delay_ms(150);
-		PORTL = 0x00;	
+		led = 0x00;	
 		_delay_ms(150);
 	}
 	
