@@ -8,13 +8,19 @@
  */ 
 
 #define F_CPU 16000000UL
-#define led PORTL
+
+//--Define Hardware I/O to uncouple Source code from any Hardware
+#define output PORTL
+#define input PINK
 
 #include <avr/io.h>
 #include <stdio.h>
 #include <util/delay.h>
 
-//This function initialiases the Direction and Value at Startup of the Hardware. 
+//--Prototypes declaration
+void blk_mode1 ();
+
+//This function initializes the Direction and Value at Startup of the Hardware. 
 void initPorts () {
 	//--Direction--//
 	DDRL = 0xff;	//PortL Output LEDs
@@ -23,17 +29,33 @@ void initPorts () {
 	
 	//--Startup value--//
 	PORTL = 0x00;	//All LEDs off
+	PORTK = 0xff;
+}
+
+//Release Detection of Blinking state
+unsigned char release_detection (char Input){
+	if ((Input & 0x01) == 0x00) {
+		return 0x01;
+	}else
+	{
+		return 0x00;
+	}
 }
 
 int main(void)
 {
 	initPorts();
 	while(1) {
-		led = 0x01;
-		_delay_ms(150);
-		led = 0x00;	
-		_delay_ms(150);
+		//Copy Input to have a save State in the next Execution.
+		char _input = input;
+		
+		if (release_detection(_input) == 0x01)
+		{
+			blk_mode1();
+		}else {
+			output = 0x00;
+		}
 	}
-	
+		
 }
 
