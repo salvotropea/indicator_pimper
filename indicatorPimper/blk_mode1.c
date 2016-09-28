@@ -17,7 +17,7 @@
 
 void blk_mode1 (){
 	
-	int pause = 100;
+	int pause = 83;
 	
 	output = 0x01;
 	_delay_ms(pause);
