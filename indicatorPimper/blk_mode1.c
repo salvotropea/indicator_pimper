@@ -5,9 +5,7 @@
  *  Author: Tropea
  */ 
 
-#define F_CPU 16000000UL
-
-#define output PORTL
+#include "HardwareDef.h"
 
 #include <avr/io.h>
 #include <stdio.h>

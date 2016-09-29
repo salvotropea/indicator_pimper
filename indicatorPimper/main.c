@@ -7,15 +7,16 @@
  * Description:		Application to modify the flashing mode of Indicator Lamps in cars.
  */ 
 
-#define F_CPU 16000000UL
-
-//--Define Hardware I/O to uncouple Source code from any Hardware
-#define output PORTL
-#define input PINK
-
+//#define F_CPU 16000000UL
+//
+////--Define Hardware I/O to uncouple Source code from any Hardware
+//#define output PORTL
+//#define input PINK
+#include "HardwareDef.h"
 #include <avr/io.h>
 #include <stdio.h>
 #include <util/delay.h>
+
 
 //--Prototypes declaration
 void blk_mode1 ();
