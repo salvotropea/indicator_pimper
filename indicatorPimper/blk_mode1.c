@@ -1,9 +1,12 @@
 /*
  * blk_mode1.c
  *
- * Created: 28.09.2016 21:36:42
- *  Author: Tropea
- */ 
+ * Start Development:	24.09.2016 14:13:49
+ * Author :		Tropea Salvatore
+ * Version:		V a1.00.00
+ * Description:		Application to modify the flashing mode of Indicator Lamps in cars.
+ *			Blinking_mode 1 runs a ProgressBar with 8 LEDs
+ */
 
 #include "HardwareDef.h"
 
@@ -16,21 +19,28 @@
 void blk_mode1 (){
 	
 	int pause = 83;
+	unsigned char blkSteps [] =  {0x01, 0x03, 0x07, 0x0f, 0x1f, 0x3f, 0x7f, 0xff};
 	
-	output = 0x01;
-	_delay_ms(pause);
-	output = 0x03;
-	_delay_ms(pause);
-	output = 0x07;
-	_delay_ms(pause);
-	output = 0x0F;
-	_delay_ms(pause);
-	output = 0x1F;
-	_delay_ms(pause);
-	output = 0x3F;
-	_delay_ms(pause);
-	output = 0x7F;
-	_delay_ms(pause);
-	output = 0xFF;
-	_delay_ms(pause);
+	for (unsigned int i = 0; i < sizeof(blkSteps); i++)
+	{
+		OUTPUT = blkSteps[i];
+		_delay_ms(pause);
+	}
+		
+	//OUTPUT = 0x01;
+	//_delay_ms(pause);
+	//OUTPUT = 0x03;
+	//_delay_ms(pause);
+	//OUTPUT = 0x07;
+	//_delay_ms(pause);
+	//OUTPUT = 0x0F;
+	//_delay_ms(pause);
+	//OUTPUT = 0x1F;
+	//_delay_ms(pause);
+	//OUTPUT = 0x3F;
+	//_delay_ms(pause);
+	//OUTPUT = 0x7F;
+	//_delay_ms(pause);
+	//OUTPUT = 0xFF;
+	//_delay_ms(pause);
 }
