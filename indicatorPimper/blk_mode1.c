@@ -19,28 +19,23 @@
 void blk_mode1 (){
 	
 	int pause = 83;
-	unsigned char blkSteps [] =  {0x01, 0x03, 0x07, 0x0f, 0x1f, 0x3f, 0x7f, 0xff};
+	unsigned char blkSteps [] =  {0x00, 0x01, 0x03, 0x07, 0x0f, 0x1f, 0x3f, 0x7f, 0xff};
 	
 	for (unsigned int i = 0; i < sizeof(blkSteps); i++)
 	{
 		OUTPUT = blkSteps[i];
 		_delay_ms(pause);
 	}
-		
-	//OUTPUT = 0x01;
-	//_delay_ms(pause);
-	//OUTPUT = 0x03;
-	//_delay_ms(pause);
-	//OUTPUT = 0x07;
-	//_delay_ms(pause);
-	//OUTPUT = 0x0F;
-	//_delay_ms(pause);
-	//OUTPUT = 0x1F;
-	//_delay_ms(pause);
-	//OUTPUT = 0x3F;
-	//_delay_ms(pause);
-	//OUTPUT = 0x7F;
-	//_delay_ms(pause);
-	//OUTPUT = 0xFF;
-	//_delay_ms(pause);
+}
+
+void blk_mode11 (){
+	
+	int pause = 83*4;
+	unsigned char blkSteps [] =  {0x00, 0x0f, 0xff};
+	
+	for (unsigned int i = 0; i < sizeof(blkSteps); i++)
+	{
+		OUTPUT = blkSteps[i];
+		_delay_ms(pause);
+	}
 }
