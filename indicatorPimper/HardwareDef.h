@@ -10,6 +10,7 @@
 #define HARDWAREDEF_H_
 #define OUTPUT PORTL
 #define INPUT PINK
+#define SEL PINH
 #define F_CPU 16000000UL
 
 

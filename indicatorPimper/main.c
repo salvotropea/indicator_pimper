@@ -16,6 +16,7 @@
 
 //--Prototypes declaration
 void blk_mode1 ();
+void blk_mode11 ();
 
 //This function initializes the Direction and Value at Startup of the Hardware. 
 void initPorts () {
@@ -39,16 +40,35 @@ unsigned char release_detection (char Input){
 	}
 }
 
+void (*blink) () = blk_mode1;
+void blk_selection () {
+	switch (SEL)
+	{
+		case 0x01:
+		blink = blk_mode1;
+		break;
+		case 0x02:
+		blink = blk_mode11;
+		break;
+		default:
+		blink = blk_mode1;
+		break;
+	}
+}
+
 int main(void)
 {
 	initPorts();
+	blk_selection();
 	while(1) {
 		//Copy Input to have a save State in the next Execution.
 		char _input = INPUT;
 		
+		
+		
 		if (release_detection(_input) == 0x01)
 		{
-			blk_mode1();
+			blink();
 		}else {
 			OUTPUT = 0x00;
 		}
