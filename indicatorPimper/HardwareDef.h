@@ -8,8 +8,8 @@
 
 #ifndef HARDWAREDEF_H_
 #define HARDWAREDEF_H_
-#define output PORTL
-#define input PINK
+#define OUTPUT PORTL
+#define INPUT PINK
 #define F_CPU 16000000UL
 
 
