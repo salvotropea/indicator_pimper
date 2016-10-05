@@ -7,11 +7,7 @@
  * Description:		Application to modify the flashing mode of Indicator Lamps in cars.
  */ 
 
-//#define F_CPU 16000000UL
-//
-////--Define Hardware I/O to uncouple Source code from any Hardware
-//#define output PORTL
-//#define input PINK
+
 #include "HardwareDef.h"
 #include <avr/io.h>
 #include <stdio.h>
@@ -48,13 +44,13 @@ int main(void)
 	initPorts();
 	while(1) {
 		//Copy Input to have a save State in the next Execution.
-		char _input = input;
+		char _input = INPUT;
 		
 		if (release_detection(_input) == 0x01)
 		{
 			blk_mode1();
 		}else {
-			output = 0x00;
+			OUTPUT = 0x00;
 		}
 	}
 		
