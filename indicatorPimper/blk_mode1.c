@@ -40,31 +40,5 @@ void blk_mode11 (){
 		_delay_ms(pause);
 	}
 }
-//Dimm LEDs on and off (Ramp)
-double dutyCycle = 0;
 
-void blk_mode2(){
-	TCCR5A = (1 << COM5A1) | (1 << WGM00) | (1 << WGM01);
-	TIMSK5 = (1 << TOIE5);
-	
-	OCR5A = (dutyCycle/100)*255;
-	
-	sei();
-	
-	TCCR5B = (1 << CS00);
-	
-	OUTPUT = 0x01;
-	
-	while (dutyCycle < 100)
-	{
-		_delay_ms(100);
-		dutyCycle += 10;
-	}
-	
-}
-
-ISR(TIMER5_OVF_vect)
-{
-	OCR5A = (dutyCycle/100)*255;
-}
 
