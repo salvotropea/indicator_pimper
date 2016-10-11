@@ -5,7 +5,7 @@
  * Author :		Tropea Salvatore
  * Version:		V a1.00.00
  * Description:		Application to modify the flashing mode of Indicator Lamps in cars.
- *			Blinking_mode 1 runs a ProgressBar with 8 LEDs
+ *			Blinking_mode 2 provides a dimmable LED to dimm up & down in different modes.
  */
 
 #include "HardwareDef.h"
