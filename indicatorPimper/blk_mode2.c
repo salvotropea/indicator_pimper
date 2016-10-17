@@ -19,6 +19,7 @@
 int dutyCycle = 0;
 int cycles = 0;
 char direction = 0; //0->up 1->down
+char state = 0;
 unsigned int interval = 200;
 unsigned int speed = 5;
 
@@ -27,53 +28,57 @@ void blk_mode2(){
 	TIMSK5 = (1 << TOIE5);
 	
 	OCR5AL = dutyCycle;
-	//OCR5AH = ;
+	
+	state = 1;
 	
 	sei();
+	
 	
 	TCCR5B = (1 << CS00);
 	
 	OUTPUT = 0x00;
 	
-	while (1)
-	{
-		
-	}
-	
 }
 
 ISR(TIMER5_OVF_vect)
 {
-	if (cycles < interval)
+	if (state == 1)
 	{
-		cycles++;
-	} 
-	else
-	{
-		switch (direction)
+		if (cycles < interval)
 		{
-			case 0:
-			dutyCycle = dutyCycle + speed;
-			if (dutyCycle >= 255)
+			cycles++;
+		} 
+		else
+		{
+			switch (direction)
 			{
-				direction = 1;
-			}
-			break;
+				case 0:
+				dutyCycle = dutyCycle + speed;
+				if (dutyCycle >= 255)
+				{
+					direction = 1;
+				}
+				break;
 			
-			case 1:
-			dutyCycle = dutyCycle - speed;
-			if (dutyCycle <= 0)
-			{
-				direction = 0;
-			}
-			break;
+				case 1:
+				dutyCycle = dutyCycle - speed;
+				if (dutyCycle <= 0)
+				{
+					direction = 0;
+					state = 0;
+					dutyCycle = 0;
+					cli();
+				
+				}
+				break;
 			
-			default:
-			/* Your code here */
-			break;
+				default:
+				/* Your code here */
+				break;
+			}
+			cycles = 0;
 		}
-		cycles = 0;
-	}
+		OCR5AL = dutyCycle;
+	}	
 	
-	OCR5AL = dutyCycle;
 }
