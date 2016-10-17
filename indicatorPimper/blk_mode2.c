@@ -19,8 +19,8 @@
 int dutyCycle = 0;
 int cycles = 0;
 char direction = 0; //0->up 1->down
-unsigned int interval = 300;
-unsigned int speed = 15;
+unsigned int interval = 200;
+unsigned int speed = 5;
 
 void blk_mode2(){
 	TCCR5A = (1 << COM5A1) | (1 << WGM00) | (1 << WGM01);
@@ -62,7 +62,7 @@ ISR(TIMER5_OVF_vect)
 			
 			case 1:
 			dutyCycle = dutyCycle - speed;
-			if (dutyCycle == 0)
+			if (dutyCycle <= 0)
 			{
 				direction = 0;
 			}
