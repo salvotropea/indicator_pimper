@@ -19,6 +19,9 @@
 int dutyCycle = 0;
 int cycles = 0;
 char direction = 0; //0->up 1->down
+unsigned int interval = 300;
+unsigned int speed = 15;
+
 void blk_mode2(){
 	TCCR5A = (1 << COM5A1) | (1 << WGM00) | (1 << WGM01);
 	TIMSK5 = (1 << TOIE5);
@@ -41,7 +44,7 @@ void blk_mode2(){
 
 ISR(TIMER5_OVF_vect)
 {
-	if (cycles < 250)
+	if (cycles < interval)
 	{
 		cycles++;
 	} 
@@ -50,7 +53,7 @@ ISR(TIMER5_OVF_vect)
 		switch (direction)
 		{
 			case 0:
-			dutyCycle = dutyCycle + 5;
+			dutyCycle = dutyCycle + speed;
 			if (dutyCycle >= 255)
 			{
 				direction = 1;
@@ -58,7 +61,7 @@ ISR(TIMER5_OVF_vect)
 			break;
 			
 			case 1:
-			dutyCycle = dutyCycle - 5;
+			dutyCycle = dutyCycle - speed;
 			if (dutyCycle == 0)
 			{
 				direction = 0;
