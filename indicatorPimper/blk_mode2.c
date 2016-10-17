@@ -18,6 +18,7 @@
 //Dimm LEDs on and off (Ramp)
 int dutyCycle = 0;
 int cycles = 0;
+char direction = 0; //0->up 1->down
 void blk_mode2(){
 	TCCR5A = (1 << COM5A1) | (1 << WGM00) | (1 << WGM01);
 	TIMSK5 = (1 << TOIE5);
@@ -29,7 +30,7 @@ void blk_mode2(){
 	
 	TCCR5B = (1 << CS00);
 	
-	OUTPUT = 0x01;
+	OUTPUT = 0x00;
 	
 	while (1)
 	{
@@ -40,13 +41,34 @@ void blk_mode2(){
 
 ISR(TIMER5_OVF_vect)
 {
-	if (cycles < 150)
+	if (cycles < 250)
 	{
 		cycles++;
 	} 
 	else
 	{
-		dutyCycle = dutyCycle + 5;
+		switch (direction)
+		{
+			case 0:
+			dutyCycle = dutyCycle + 5;
+			if (dutyCycle >= 255)
+			{
+				direction = 1;
+			}
+			break;
+			
+			case 1:
+			dutyCycle = dutyCycle - 5;
+			if (dutyCycle == 0)
+			{
+				direction = 0;
+			}
+			break;
+			
+			default:
+			/* Your code here */
+			break;
+		}
 		cycles = 0;
 	}
 	
