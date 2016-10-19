@@ -69,7 +69,6 @@ int main(void)
 		
 		if (release_detection(_input) == 0x01)
 		{
-			//blink();
 			blk_mode2();
 		}else {
 			OUTPUT = 0x00;
