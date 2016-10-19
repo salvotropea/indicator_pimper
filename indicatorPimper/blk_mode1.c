@@ -13,6 +13,7 @@
 #include <avr/io.h>
 #include <stdio.h>
 #include <util/delay.h>
+#include <avr/interrupt.h>
 
 
 
@@ -39,8 +40,5 @@ void blk_mode11 (){
 		_delay_ms(pause);
 	}
 }
-//Dimm LEDs on and off (Ramp)
-void blk_mode2(){
-	
-}
+
 
