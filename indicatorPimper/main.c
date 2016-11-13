@@ -17,6 +17,7 @@
 //--Prototypes declaration
 void blk_mode1 ();
 void blk_mode11 ();
+void blk_mode12 ();
 void blk_mode2 ();
 
 //This function initializes the Direction and Value at Startup of the Hardware. 
@@ -52,6 +53,9 @@ void blk_selection () {
 		blink = blk_mode11;
 		break;
 		case 0x03:
+		blink = blk_mode12;
+		break;
+		case 0x04:
 		blink = blk_mode2;
 		break;
 		default:
