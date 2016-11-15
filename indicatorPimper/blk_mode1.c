@@ -42,12 +42,12 @@ void blk_mode11 (){
 }
 
 void blk_mode12() {
-	int pause = 83;
-	unsigned char blkSteps [] =  {0x01, 0x03, 0x07, 0x0E, 0x1C, 0x38, 0x70, 0xE0, 0xC0, 0x80, 0x00};
+	int pause = 50;
+	unsigned int msk = 0xF00;
 	
-	for (unsigned int i = 0; i < sizeof(blkSteps); i++)
+	for (unsigned int i = 0; i < 14; i++)
 	{
-		OUTPUT = blkSteps[i];
+		OUTPUT = (msk >> (11 - i));
 		_delay_ms(pause);
 	}
 	
