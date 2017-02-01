@@ -44,3 +44,5 @@ Makefile
 # Debug files
 *.dSYM/
 *.su
+
+*.ms12
