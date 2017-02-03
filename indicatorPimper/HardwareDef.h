@@ -8,9 +8,9 @@
 
 #ifndef HARDWAREDEF_H_
 #define HARDWAREDEF_H_
-#define OUTPUT PORTL
-#define INPUT PINK
-#define SEL PINH
+#define OUTPUT PORTB
+#define INPUT PIND
+#define SEL PINC
 #define F_CPU 16000000UL
 
 
