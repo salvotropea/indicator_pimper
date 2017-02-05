@@ -2,9 +2,9 @@
  * indicatorPimper.c
  *
  * Start Development:	24.09.2016 14:13:49
- * Author :		Tropea Salvatore
- * Version:		V a1.00.00
- * Description:		Application to modify the flashing mode of Indicator Lamps in cars.
+ * Author :				Tropea Salvatore
+ * Version:				V a1.00.00
+ * Description:			Application to modify the flashing mode of Indicator Lamps in cars.
  */ 
 
 
@@ -23,13 +23,13 @@ void blk_mode2 ();
 //This function initializes the Direction and Value at Startup of the Hardware. 
 void initPorts () {
 	//--Direction--//
-	DDRL = 0xff;	//PortL Output LEDs
-	DDRH = 0x00;	//PortH Input DIP-Switches
-	DDRK = 0x00;	//PortK Input Button1/2/3 & Joystick
+	OUTPUT = 0xff;	//PortL Output LEDs
+	SEL = 0x00;	//PortH Input DIP-Switches
+	INPUT = 0x00;	//PortK Input Button1/2/3 & Joystick
 	
 	//--Startup value--//
-	PORTL = 0x00;	//All LEDs off
-	PORTK = 0xff;
+	OUTPUT = 0x00;	//All LEDs off
+	//PORTK = 0xff;
 }
 
 //Release Detection of Blinking state
