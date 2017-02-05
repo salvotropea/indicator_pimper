@@ -11,7 +11,7 @@
 #define OUTPUT PORTB
 #define INPUT PIND
 #define SEL PINC
-#define F_CPU 16000000UL
+#define F_CPU 8000000UL
 
 
 #endif /* HARDWAREDEF_H_ */
