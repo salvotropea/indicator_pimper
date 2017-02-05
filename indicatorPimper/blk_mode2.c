@@ -24,19 +24,19 @@ unsigned int interval = 120;	    //interval value (for cycles) default-> ??
 unsigned int speed = 5;		    //Speed up value (for dutyCylce increment or decrement) default-> ??
 
 void blk_mode2(){
-	TCCR5A = (1 << COM5A1) | (1 << WGM00) | (1 << WGM01);
-	TIMSK5 = (1 << TOIE5);
+	TCCR0 = (1 << COM01) | (1 << COM00) | (1 << WGM00) | (1 << WGM01) | (1 << WGM00) ;
+	TIMSK = (1 << TOIE0);
 	
-	OCR5AL = dutyCycle;
+	OCR0 = dutyCycle;
 	
 	state = 1;
 	sei();
-	TCCR5B = (1 << CS00);
+	TCCR0 = (1 << CS00);
 	OUTPUT = 0x00;
 }
 
 //-Interrupt Service Routine for TIM5 Overflow
-ISR(TIMER5_OVF_vect)
+ISR(TIMER0_OVF_vect)
 {
 	if (state == 1) //Is blinking active?
 	{
@@ -74,7 +74,7 @@ ISR(TIMER5_OVF_vect)
 			}
 			cycles = 0; //Reset interval to 0
 		}
-		OCR5AL = dutyCycle; //write actual dutyCycle to HW-Register
+		OCR0 = dutyCycle; //write actual dutyCycle to HW-Register
 	}	
 	
 }
