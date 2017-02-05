@@ -34,7 +34,7 @@ void initPorts () {
 
 //Release Detection of Blinking state
 unsigned char release_detection (char Input){
-	if ((Input & 0x01) == 0x00) {
+	if ((Input & 0x04) == 0x04) {
 		return 0x01;
 	}else
 	{
