@@ -23,7 +23,7 @@ void blk_mode2 ();
 //This function initializes the Direction and Value at Startup of the Hardware. 
 void initPorts () {
 	//--Direction--//
-	OUTPUT = 0xff;	//PortL Output LEDs
+	DDRB = 0xff;	//PortL Output LEDs
 	SEL = 0x00;	//PortH Input DIP-Switches
 	INPUT = 0x00;	//PortK Input Button1/2/3 & Joystick
 	
