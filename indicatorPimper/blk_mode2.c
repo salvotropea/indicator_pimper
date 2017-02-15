@@ -24,6 +24,7 @@ unsigned int interval = 1000;	    //interval value (for cycles) default-> ??
 unsigned int speed = 5;		    //Speed up value (for dutyCylce increment or decrement) default-> ??
 
 void blk_mode2(){
+	//Timer Config Register -> Timer0
 	TCCR0 = (1 << WGM00) | (1 << COM01) | (1 << COM00) | (1 << WGM01) | (1 << CS00);
 	
 	TIMSK = (1 << TOIE0);
