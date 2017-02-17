@@ -44,7 +44,10 @@ unsigned char release_detection (char Input){
 
 void (*blink) () = blk_mode1;
 void blk_selection () {
-	switch (SEL)
+	//Untere 4  Bits ausmaskieren
+	unsigned char _sel = SEL & 0x0F;
+	
+	switch (_sel)
 	{
 		case 0x01:
 		blink = blk_mode1;
