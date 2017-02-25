@@ -8,6 +8,7 @@
 
 #ifndef HARDWAREDEF_H_
 #define HARDWAREDEF_H_
+#define OUTPUTDIRECTION DDRB
 #define OUTPUT PORTB
 #define INPUT PIND
 #define SEL PINC
