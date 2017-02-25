@@ -20,7 +20,7 @@ int dutyCycle = 0;		    //PWM Value 0-0xff Comparisionvalue
 int cycles = 0;			    //Interval in prog. cycles for slow dimm up and down
 char direction = 0;		    //Direction of Dimm. 0->up 1->down
 char state = 0;			    //State of function
-unsigned int interval = 1000;	    //interval value (for cycles) default-> ??
+unsigned int interval = 350;	    //interval value (for cycles) default-> ??
 unsigned int speed = 5;		    //Speed up value (for dutyCylce increment or decrement) default-> ??
 
 void blk_mode2(){
