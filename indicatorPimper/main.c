@@ -23,13 +23,12 @@ void blk_mode2 ();
 //This function initializes the Direction and Value at Startup of the Hardware. 
 void initPorts () {
 	//--Direction--//
-	OUTPUTDIRECTION = 0xff;	//PortL Output LEDs
-	SEL = 0x00;	//PortH Input DIP-Switches
-	INPUT = 0x00;	//PortK Input Button1/2/3 & Joystick
+	OUTPUTDIRECTION = 0xff;		//Setze Ausgangsregister aus Ausgang
+	SEL = 0x00;			//Auswahlregister auf 'false'.PullDown
+	INPUT = 0x00;			//Eingangsregister auf 'false'. PullDown
 	
 	//--Startup value--//
-	OUTPUT = 0x00;	//All LEDs off
-	//PORTK = 0xff;
+	OUTPUT = 0x00;			//Initialisierung Ausgangsregister. PullDown
 }
 
 //Release Detection of Blinking state
